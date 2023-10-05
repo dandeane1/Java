@@ -1,11 +1,12 @@
 public class Person {
-
-        private String name;
+       private String name;
 
         public void setName(String name) {
             this.name = name;
         }
-
+public String getName()  {
+        return name;
+    }
         public void sayHello() {
             System.out.printf("Hello there %s!", this.name);
         }
@@ -19,5 +20,6 @@ public class Person {
 
             joeSmith.sayHello();
         }
-    }
 
+
+    }
