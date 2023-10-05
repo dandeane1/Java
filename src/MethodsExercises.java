@@ -1,75 +1,99 @@
 import java.util.Scanner;
+
 public class MethodsExercises {
+    public static Scanner localScanner = new Scanner(System.in);
 
-    public static int add(int a, int b) {
-        return a + b;
+    public static int addition(int x, int y) {
+
+        return x + y;
     }
 
-    public static int subtract(int a, int b) {
-        return a - b;
+    public static int subtraction(int x, int y) {
+
+        return x - y;
     }
 
-    public static int multiply(int a, int b) {
-        return a * b;
+    public static int multiplication(int x, int y) {
+
+        return x * y;
     }
 
-    public static int divide(int a, int b) {
-        if (b == 0) { // Check if the divisor is zero
-            throw new ArithmeticException("Cannot divide by zero");
+    public static int division(int x, int y) {
+
+        return x / y;
+    }
+
+    public static int modulo(int x, int y) {
+
+        return x % y;
+    }
+
+    //Multiply without using operator
+
+    public static int multiplyLoop(int x, int y) {
+        int bucket = 0;
+
+        for (int i = 0; i < y; i++) {
+            bucket += x;
         }
-        return a / b;
+
+        return bucket;
     }
 
-    public static int modulus(int a, int b) {
-        if (b == 0) { // Check if the divisor is zero
-            throw new ArithmeticException("Cannot divide by zero"); // Throw an exception
+    // recursion multiply bonus
+
+    public static int recursionMultiply(int x, int y, int bucket) {
+
+        if (y == 0) {
+            return bucket;
         }
-        return a % b; // Return the remainder of a and b
+
+        bucket += x;
+
+        y--;
+
+        return recursionMultiply(x, y, bucket);
     }
 
-    // Test the methods and verify the output
-    public static void main(String[] args) {
-//        variables for testing
-        int x = 10;
-        int y = 5;
-        int z = 0;
+    public static int getInteger(int min, int max) {
+        System.out.printf("Please enter a number between: %d-%d%n", min, max);
 
-        // results
-        System.out.println("x + y = " + add(x, y)); // x + y = 15
-        System.out.println("x - y = " + subtract(x, y)); // x - y = 5
-        System.out.println("x * y = " + multiply(x, y)); // x * y = 50
-        System.out.println("x / y = " + divide(x, y)); // x / y = 2
-        System.out.println("x % y = " + modulus(x, y)); // x % y = 0
+        int userIntAnswer = localScanner.nextInt();
 
-        // Try to divide by zero and catch the exception
-        try {
-            System.out.println("x / z = " + divide(x, z)); // This will cause an error
-        } catch (ArithmeticException e) {
-            System.out.println(e.getMessage()); // Cannot divide by zero
+        if (userIntAnswer < min || userIntAnswer > max) {
+            System.out.println("Incorrect input detected - please try again");
 
+            return getInteger(min, max);
+        }
+
+        return userIntAnswer;
+    }
+
+    public static void factorialPrint() {
+        int myUsersNum = getInteger(1, 10);
+        String myOutput = "1";
+        int mathBucket = 1;
+
+        for (int i = 1; i <= myUsersNum; i++) {
+            if (i == 1) {
+                System.out.printf("%d! = %-16s = %d%n", i, myOutput, mathBucket);
+                continue;
+            }
+
+            mathBucket *= i;
+            myOutput += " x " + i;
+
+            System.out.printf("%d! = %-16s = %d%n", i, myOutput, mathBucket);
         }
     }
-//            Scanner sc = new Scanner(System.in);
-//            System.out.print("Enter the number of sides for a pair of dice: ");
-//            int sides = sc.nextInt();
-//            String choice = "y";
-//            while (choice.equalsIgnoreCase("y")) {
-//                System.out.println("Rolling the dice...");
-//                int die1 = rollDice(sides);
-//                int die2 = rollDice(sides);
-//                System.out.println("The results are: " + die1 + " and " + die2);
-//                System.out.print("Do you want to roll the dice again? (y/n): ");
-//                choice = sc.next();
-//            }
-//            System.out.println("Thank you");
-//        }
-//
-//        // This method uses the .random method of the java.lang.Math class to generate a random number between 1 and the given number of sides.
-//        // It returns the result as an integer.
-//        public static int rollDice ( int sides){
-//            return (int) (Math.random() * sides) + 1;
-//        }
-//    }
+
+            public static void main (String[]args){
+                factorialPrint();
+            }
+
+
+        }
+
 
 
 

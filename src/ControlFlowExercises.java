@@ -4,11 +4,11 @@ public class ControlFlowExercises {
     //    Create a while loop that runs so long as i is less than or equal to 15
     public static void main(String[] args) {
 
-        int i = 5;
-        while (i <= 15) {
-            System.out.println(+i);
-            i++;
-        }
+//        int i = 5;
+//        while (i <= 15) {
+//            System.out.println(+i);
+//            i++;
+//        }
 
 //        Create a do-while loop that will count by 2's starting with 0 and ending at 100. Follow each number with a new line.
         int x = 2;
@@ -60,11 +60,10 @@ public class ControlFlowExercises {
                 System.out.println(b);
 
             }
-        }
-    }
 
-    public static void numberSquared() {
-Scanner scanner = new Scanner(System.in);
+
+
+                Scanner scanner = new Scanner(System.in);
                 String choice;
 
                 do {
@@ -87,61 +86,61 @@ Scanner scanner = new Scanner(System.in);
 
             }
 
-    public static void gradeConverter() {
 
-        Scanner input = new Scanner(System.in);
-        String choice;
 
-        do {
-            System.out.print("Enter a numerical grade (0-100): "); // prompt the user for a numerical grade
-            int numericalGrade = input.nextInt(); // read the numerical grade as an integer
+                Scanner input = new Scanner(System.in);
+                String choice;
 
-            String letterGrade; // declare a variable to store the letter grade
+                do {
+                    System.out.print("Enter a numerical grade (0-100): "); // prompt the user for a numerical grade
+                    int numericalGrade = input.nextInt(); // read the numerical grade as an integer
 
-            // use a switch statement to assign the letter grade based on the first digit of the numerical grade
-            switch (numericalGrade / 10) {
-                case 10:
-                case 9:
-                    letterGrade = "A";
-                    break;
-                case 8:
-                    letterGrade = "B";
-                    break;
-                case 7:
-                    letterGrade = "C";
-                    break;
-                case 6:
-                    letterGrade = "D";
-                    break;
-                default:
-                    letterGrade = "F";
-            }
+                    String letterGrade; // declare a variable to store the letter grade
 
-            // use a nested switch statement to add a plus or minus sign based on the second digit of the numerical grade
-            switch (numericalGrade % 10) {
-                case 9:
-                case 8:
-                    if (!letterGrade.equals("F")) { // do not add a plus sign for F grades
-                        letterGrade += "+";
+                    // use a switch statement to assign the letter grade based on the first digit of the numerical grade
+                    switch (numericalGrade / 10) {
+                        case 10:
+                        case 9:
+                            letterGrade = "A";
+                            break;
+                        case 8:
+                            letterGrade = "B";
+                            break;
+                        case 7:
+                            letterGrade = "C";
+                            break;
+                        case 6:
+                            letterGrade = "D";
+                            break;
+                        default:
+                            letterGrade = "F";
                     }
-                    break;
-                case 1:
-                case 0:
-                    if (!letterGrade.equals("F")) { // do not add a minus sign for F grades
-                        letterGrade += "-";
+
+                    // use a nested switch statement to add a plus or minus sign based on the second digit of the numerical grade
+                    switch (numericalGrade % 10) {
+                        case 9:
+                        case 8:
+                            if (!letterGrade.equals("F")) { // do not add a plus sign for F grades
+                                letterGrade += "+";
+                            }
+                            break;
+                        case 1:
+                        case 0:
+                            if (!letterGrade.equals("F")) { // do not add a minus sign for F grades
+                                letterGrade += "-";
+                            }
+                            break;
                     }
-                    break;
+
+                    // print the letter grade
+                    System.out.println("The letter grade is: " + letterGrade);
+
+                    // ask the user if they want to continue
+                    System.out.print("Do you want to continue (yes/no)? ");
+                    input.nextLine(); // consume the newline character
+                    choice = input.nextLine(); // read the user's choice as a string
+                } while (choice.equalsIgnoreCase("yes")); // repeat the loop if the user says yes
+
+                input.close(); // close the scanner object
             }
-
-            // print the letter grade
-            System.out.println("The letter grade is: " + letterGrade);
-
-            // ask the user if they want to continue
-            System.out.print("Do you want to continue (yes/no)? ");
-            input.nextLine(); // consume the newline character
-            choice = input.nextLine(); // read the user's choice as a string
-        } while (choice.equalsIgnoreCase("yes")); // repeat the loop if the user says yes
-
-        input.close(); // close the scanner object
-    }
-}
+        }
