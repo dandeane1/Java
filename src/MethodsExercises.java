@@ -1,120 +1,68 @@
 import java.util.Scanner;
 
 public class MethodsExercises {
-    public static Scanner localScanner = new Scanner(System.in);
 
-    public static int addition(int x, int y) {
-        return x + y;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Testing arithmetic methods
+        System.out.println("Addition: " + add(5, 3));
+        System.out.println("Subtraction: " + subtract(9, 4));
+        System.out.println("Multiplication: " + multiply(7, 2));
+        System.out.println("Division: " + divide(10, 2));
+        System.out.println("Modulus: " + modulus(17, 4));
+
+        // Testing getInteger method
+        System.out.print("Enter a number between 1 and 10: ");
+        int userInput = getInteger(1, 10);
+        System.out.println("Valid input: " + userInput);
+
+        // Testing factorial method
+        System.out.print("Enter an integer from 1 to 10: ");
+        int number = getInteger(1, 10);
+        long factorial = calculateFactorial(number);
+        System.out.println(number + "! = " + factorial);
     }
 
-    public static int subtraction(int x, int y) {
-        return x - y;
+    public static int add(int a, int b) {
+        return a + b;
     }
 
-    public static int multiplication(int x, int y) {
-        return x * y;
+    public static int subtract(int a, int b) {
+        return a - b;
     }
 
-    public static int division(int x, int y) {
-        return x / y;
+    public static int multiply(int a, int b) {
+        return a * b;
     }
 
-    public static int modulo(int x, int y) {
-        return x % y;
+    public static int divide(int a, int b) {
+        return a / b;
     }
 
-    public static int multiplyLoop(int x, int y) {
-        int bucket = 0;
-        for (int i = 0; i < y; i++) {
-            bucket += x;
-        }
-        return bucket;
-    }
-
-    public static int recursionMultiply(int x, int y, int bucket) {
-        if (y == 0) {
-            return bucket;
-        }
-        bucket += x;
-        y--;
-        return recursionMultiply(x, y, bucket);
+    public static int modulus(int a, int b) {
+        return a % b;
     }
 
     public static int getInteger(int min, int max) {
-        System.out.printf("Please enter a number between: %d-%d%n", min, max);
-        int userIntAnswer = localScanner.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        int userInput = scanner.nextInt();
 
-        if (userIntAnswer < min || userIntAnswer > max) {
-            System.out.println("Incorrect input detected - please try again");
+        if (userInput < min || userInput > max) {
+            System.out.println("Invalid input. Please try again.");
             return getInteger(min, max);
         }
 
-        return userIntAnswer;
+        return userInput;
     }
 
-    public static void FactorialCalculator() {
-        Scanner scanner = new Scanner(System.in);
+    public static long calculateFactorial(int number) {
+        long factorial = 1;
 
-        while (true) {
-            int myUsersNum = getInteger(scanner, 1, 10);
-            int mathBucket = 1;
-
-            System.out.printf("%d! = ", myUsersNum);
-            for (int i = 1; i <= myUsersNum; i++) {
-                mathBucket *= i;
-                System.out.print(i);
-                if (i < myUsersNum) {
-                    System.out.print(" x ");
-                }
-            }
-
-            System.out.printf(" = %d%n", mathBucket);
-            System.out.print("Do you want to continue? (y/n): ");
-            String choice = scanner.next();
-
-            if (!choice.equalsIgnoreCase("y")) {
-                break;
-            }
+        for (int i = 1; i <= number; i++) {
+            factorial *= i;
         }
 
-        scanner.close();
-    }
-
-    public static int getInteger(Scanner scanner, int min, int max) {
-        int value;
-        while (true) {
-            System.out.printf("Enter an integer between %d and %d: ", min, max);
-            if (scanner.hasNextInt()) {
-                value = scanner.nextInt();
-                if (value >= min && value <= max) {
-                    break;
-                } else {
-                    System.out.println("Please enter a valid integer within the specified range.");
-                }
-            } else {
-                System.out.println("Please enter a valid integer.");
-                scanner.next();
-            }
-        }
-        return value;
-    }
-
-    public static void diceRolling() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the number of sides for a pair of dice: ");
-        int sides = sc.nextInt();
-
-        String choice = "y";
-        while (choice.equalsIgnoreCase("y")) {
-            int dice1 = rollDice(sides);
-            int dice2 = rollDice(sides);
-            System.out.println("You rolled a " + dice1 + " and a " + dice2);
-            System.out.print("Do you want to roll the dice again? (y/n): ");
-            choice = sc.next();
-        }
-    }
-
-    public static int rollDice(int sides) {
-        return (int) (Math.random() * sides) + 1;
+        return factorial;
     }
 }
