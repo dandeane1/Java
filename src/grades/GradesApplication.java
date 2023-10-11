@@ -10,7 +10,7 @@ public class GradesApplication {
         // Create and add Student objects to the HashMap
         Student student1 = new Student("John");
         student1.addGrade(85);
-        student1. addGrade(90);
+        student1.addGrade(90);
         student1.addGrade(95);
         students.put("johndoe", student1);
 
@@ -51,7 +51,8 @@ public class GradesApplication {
                 Student student = students.get(input);
                 System.out.println("\nName: " + student.getName());
                 System.out.println("GitHub Username: " + input);
-                System.out.println("Current Average: " + student.getGradeAverage() + "\n");
+                System.out.println("Current Average: " + student.getGradeAverage());
+                System.out.println( "All Grades: " + student.getGrades() + "\n");
             } else {
                 System.out.println("\nSorry, no student found with the GitHub username of \"" + input + "\".\n");
             }
