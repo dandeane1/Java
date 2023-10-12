@@ -1,6 +1,5 @@
 package grades;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Student {
     private String name;
@@ -40,8 +39,5 @@ public class Student {
         return output;
     }
 
-    public void allStudents() {
-        HashMap<String, Student> students = new HashMap<>();
-        for (String key : students.keySet()) System.out.print("|" + key + "| ");
-    }
-}
+        }
+

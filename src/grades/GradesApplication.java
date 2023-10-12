@@ -53,6 +53,12 @@ public class GradesApplication {
                 System.out.println("GitHub Username: " + input);
                 System.out.println("Current Average: " + student.getGradeAverage());
                 System.out.println( "All Grades: " + student.getGrades() + "\n");
+            } else if (input.equals("all")) {
+                Student student = students.get(input);
+                System.out.println("\nName: " + student.getName());
+                System.out.println("GitHub Username: " + input);
+                System.out.println("Current Average: " + student.getGradeAverage());
+                System.out.println( "All Grades: " + student.getGrades() + "\n");
             } else {
                 System.out.println("\nSorry, no student found with the GitHub username of \"" + input + "\".\n");
             }
