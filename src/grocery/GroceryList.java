@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class GroceryList {
     public static void main(String[] args) {
-        String categories = "";
 
 
             Scanner scanner = new Scanner(System.in);
