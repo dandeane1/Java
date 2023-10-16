@@ -1,6 +1,6 @@
 package util;
 
-
+import java.util.Scanner;
 
 public class Input {
 
@@ -22,7 +22,20 @@ public class Input {
 //        return MethodsExercises.getInteger(min, max);
 //    }
     public int getInt(){
-        int returnInt = scanner.nextInt();
+        int returnInt = 0;
+
+        try {
+            String stringInput = getString();
+
+            returnInt = Integer.valueOf(stringInput);
+
+            return returnInt;
+        } catch (NumberFormatException exceptionObject){
+            System.out.println("That is not a number :| plz be serious");
+            //You are going to give me an INT or ELSE - recursive call =>
+            returnInt = getInt();
+        }
+
         return returnInt;
     }
     public double getDouble(double min, double max){
@@ -44,28 +57,35 @@ public class Input {
 
     public static void main(String[] args) {
         Input testInput = new Input();
-
-        String testStr = testInput.getString();
-        System.out.println(testStr);
-
-        boolean booleTest = testInput.yesNo();
-        System.out.println(booleTest);
 //
-//        int testInt = testInput.getInt(10,50);
+//       String testStr = testInput.getString();
+//        System.out.println(testStr);
 //
-//        System.out.println(testInt);
+//        boolean booleTest = testInput.yesNo();
+//        System.out.println(booleTest);
+////
+////        int testInt = testInput.getInt(10,50);
+////
+////        System.out.println(testInt);
+//
+//        testInput.getString();
+//        int testInt2 = testInput.getInt();
+//
+//        System.out.println(testInt2);
+//        testInput.getString();
+//        double testDouble = testInput.getDouble(5.5, 55.55);
+//        System.out.println(testDouble);
+//
+//        testInput.getString();
+//        double testDouble2 = testInput.getDouble();
+//        System.out.println(testDouble2);
 
-        testInput.getString();
-        int testInt2 = testInput.getInt();
+        //From here on: Refactor testing from 'Exceptions and Error Handling'
 
-        System.out.println(testInt2);
-        testInput.getString();
-        double testDouble = testInput.getDouble(5.5, 55.55);
-        System.out.println(testDouble);
+        System.out.println("Please enter a number:");
+        System.out.println(testInput.getInt());
 
-        testInput.getString();
-        double testDouble2 = testInput.getDouble();
-        System.out.println(testDouble2);
+
     }
 
 }
